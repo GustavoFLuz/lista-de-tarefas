@@ -75,32 +75,33 @@ export function useTasks() {
     return context
 }
 
-function saveLocally(taskList: Task[]) {
-    localStorage.setItem("tasks", JSON.stringify(taskList))
+export function saveLocally(taskList: Task[], test: boolean = false) {
+    if(!test)
+        localStorage.setItem("tasks", JSON.stringify(taskList))
 }
 
-function getFromLocally(): Task[] {
+export function getFromLocally(): Task[] {
     const saved = localStorage.getItem("tasks");
     if (saved === null) return [];
     return JSON.parse(saved);
 }
 
-function addNewTask(oldTaskList: Task[], newTask: Task) {
+export function addNewTask(oldTaskList: Task[], newTask: Task, test: boolean = false) {
     const newTaskList = [...oldTaskList, newTask]
-    saveLocally(newTaskList)
+    saveLocally(newTaskList, test)
     return newTaskList
 }
 
-function updateStatus(oldTaskList: Task[], { status, id }: { status: TaskStatus, id: number }) {
+export function updateStatus(oldTaskList: Task[], { status, id }: { status: TaskStatus, id: number }, test: boolean = false) {
     const found = oldTaskList.find(el => el.id === id);
     if (!found) return oldTaskList;
     const newTaskList = [...oldTaskList.filter(el => el.id !== id), { ...found, status }]
-    saveLocally(newTaskList)
+    saveLocally(newTaskList, test)
     return newTaskList;
 }
 
-function deleteByID(oldTaskList: Task[], id: number) {
+export function deleteByID(oldTaskList: Task[], id: number, test: boolean = true) {
     const newTaskList = oldTaskList.filter(task => task.id !== id)
-    saveLocally(newTaskList)
+    saveLocally(newTaskList, test)
     return newTaskList
 }
