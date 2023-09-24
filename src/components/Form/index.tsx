@@ -2,16 +2,19 @@ import { Box, Button, Paper, TextField, Tooltip } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import ClearIcon from '@mui/icons-material/Clear';
 import CheckIcon from '@mui/icons-material/Check';
-import { useTasks } from '@/contexts/Tasks';
+import { TaskContext, useTasks } from '@/contexts/Tasks';
 
 type FormProps = {
+    contextProvided?: () => TaskContext
 }
 
-export const Form: React.FC<FormProps> = ({ }) => {
+export const Form: React.FC<FormProps> = (props: FormProps) => {
     const [checkIcon, setCheckIcon] = useState(<CheckIcon sx={{ fontSize: 55, color: "#8F8" }} />)
     const [message, setMessage] = useState<string>("")
-    const { addTask, deleteAll } = useTasks();
+    const context = !props.contextProvided ? useTasks : props.contextProvided
 
+    const { addTask, deleteAll } = context();
+ 
     const handleAdd = () => {
         if (!message.length) return alert("Nenhuma mensagem escrita")
         addTask(message)

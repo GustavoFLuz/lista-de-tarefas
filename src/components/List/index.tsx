@@ -1,12 +1,14 @@
-import { taskStatus, useTasks } from '@/contexts/Tasks'
+import { TaskContext, taskStatus, useTasks } from '@/contexts/Tasks'
 import { Divider, List as ListMUI, ListSubheader, Paper } from '@mui/material'
 import React from 'react'
 import { TaskItem } from "./components/TaskItem"
 type ListProps = {
+    contextProvided?: () => TaskContext
 }
 
-export const List: React.FC<ListProps> = ({ }) => {
-    const { tasks } = useTasks();
+export const List: React.FC<ListProps> = (props: ListProps) => {
+    const context = !props.contextProvided ? useTasks : props.contextProvided
+    const { tasks } = context();
     return (
         <Paper sx={{ width: "100%", flexGrow: 1, overflow: "auto" }}>
             <ListMUI

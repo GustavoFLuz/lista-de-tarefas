@@ -1,9 +1,10 @@
-import { Task, TaskStatus } from "@/types/Tasks";
+import React from 'react';
+import { Task, TaskStatus } from './types/Tasks'
 import { ReactElement, createContext, useContext, useEffect, useState } from "react"
 
 export const taskStatus: TaskStatus[] = ["A fazer", "Em andamento", "Concluída"];
 
-export type TaskContext = {
+type TaskContext = {
     tasks: Task[],
     addTask: (message: string) => void,
     updateTaskStatus: (data: { status: TaskStatus, id: number }) => void,
@@ -45,11 +46,10 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
 
     const deleteAll = ()=>{
         setTasks([])
-        saveLocally([])
     }
 
     useEffect(() => {
-        setTasks(getFromLocally)
+        setTasks([])
     }, [])
 
     return (
@@ -65,7 +65,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     )
 }
 
-export function useTasks() {
+export function useTasks():TaskContext {
     const context = useContext(TaskContexts)
 
     if (context === null) {
@@ -75,33 +75,19 @@ export function useTasks() {
     return context
 }
 
-export function saveLocally(taskList: Task[], test: boolean = false) {
-    if(!test)
-        localStorage.setItem("tasks", JSON.stringify(taskList))
-}
-
-export function getFromLocally(): Task[] {
-    const saved = localStorage.getItem("tasks");
-    if (saved === null) return [];
-    return JSON.parse(saved);
-}
-
-export function addNewTask(oldTaskList: Task[], newTask: Task, test: boolean = false) {
+export function addNewTask(oldTaskList: Task[], newTask: Task) {
     const newTaskList = [...oldTaskList, newTask]
-    saveLocally(newTaskList, test)
     return newTaskList
 }
 
-export function updateStatus(oldTaskList: Task[], { status, id }: { status: TaskStatus, id: number }, test: boolean = false) {
+export function updateStatus(oldTaskList: Task[], { status, id }: { status: TaskStatus, id: number }) {
     const found = oldTaskList.find(el => el.id === id);
     if (!found) return oldTaskList;
     const newTaskList = [...oldTaskList.filter(el => el.id !== id), { ...found, status }]
-    saveLocally(newTaskList, test)
     return newTaskList;
 }
 
-export function deleteByID(oldTaskList: Task[], id: number, test: boolean = false) {
+export function deleteByID(oldTaskList: Task[], id: number) {
     const newTaskList = oldTaskList.filter(task => task.id !== id)
-    saveLocally(newTaskList, test)
     return newTaskList
 }
