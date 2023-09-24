@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest'
-import { addNewTask, taskStatus, deleteByID, updateStatus } from '../../src/contexts/Tasks'
+import { addNewTask, taskStatus, deleteByID, updateStatus } from '@/contexts/Tasks'
 import { Task } from '@/types/Tasks'
 
 
