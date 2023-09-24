@@ -14,19 +14,19 @@ type TaskContext = {
 
 type TaskProviderProps = {
     children: ReactElement
+    initialList?:Task[]
 }
 
 const TaskContexts = createContext<null | TaskContext>(null)
 
-export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
-    const [tasks, setTasks] = useState<Task[]>([])
+export const TaskProvider: React.FC<TaskProviderProps> = ({ children, initialList}) => {
+
+    const [tasks, setTasks] = useState<Task[]>(initialList ? initialList: [])
+
+
     const lastId = tasks.length === 0 ?
         0 : tasks.reduce((max, curr) =>
             Math.max(max, curr.id), 0) + 1;
-
-    useEffect(() => {
-
-    }, [])
 
     const addTask = (message: string) => {
         const now = new Date();
@@ -47,10 +47,6 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     const deleteAll = ()=>{
         setTasks([])
     }
-
-    useEffect(() => {
-        setTasks([])
-    }, [])
 
     return (
         <TaskContexts.Provider value={{
@@ -73,6 +69,7 @@ export function useTasks():TaskContext {
     }
 
     return context
+    
 }
 
 export function addNewTask(oldTaskList: Task[], newTask: Task) {

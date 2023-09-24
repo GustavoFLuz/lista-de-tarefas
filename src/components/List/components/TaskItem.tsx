@@ -21,7 +21,7 @@ export const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
     }
 
     return (
-        <ListItem>
+        <ListItem className='TaskItem'>
             <IconButton onClick={handleDelete}>
                 <DeleteIcon />
             </IconButton>
