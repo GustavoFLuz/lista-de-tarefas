@@ -24,6 +24,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "test/contexts/Task.test.ts", "test/components/List/List.test.tsx"],
+  "include": ["src", "test/contexts/Task.test.ts", "test/components/List/List.test.tsx", "test/components/Form/Form.test.tsx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
