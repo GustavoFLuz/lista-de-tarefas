@@ -1,3 +1,5 @@
+[![TypeScript Actions](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml/badge.svg)](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml)
+
 # Lista de Tarefas - C214 L
 
 [Vídeo de apresentação](https://drive.google.com/file/d/1Q1cnSR8R9VxxAcD5Ue3VlI3FZJx3Gslm/view?usp=sharing)
