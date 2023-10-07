@@ -53,6 +53,13 @@ jobs:
     env:
       EMAIL: lista.de.tarefas.s107@gmail.com
     steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+        run: npm i
+
       - name: Sanding an e-mail
-        uses: actions/checkout@v3
         run: node nodemailer/sendEmail.js
