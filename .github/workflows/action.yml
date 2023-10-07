@@ -1,4 +1,4 @@
-name: TypeScript Actions
+name: TypeScript CI with Node
 
 on:
   push:
