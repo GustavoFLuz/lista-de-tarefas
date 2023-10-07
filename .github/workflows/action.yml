@@ -16,7 +16,8 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v3
         with:
-          node-version: 9.8.1
+          node-version: 18
+          cache: 'npm'
       - name: Running tests
         run: |
           cd lista-de-tarefas
