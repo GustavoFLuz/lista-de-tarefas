@@ -8,9 +8,7 @@ on:
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node
@@ -18,13 +16,43 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+        run: npm i
+
       - name: Running tests
-        run: |
-          npm i
-          npm test
+        run: npm test
 
       - name: Artifact upload
         uses: actions/upload-artifact@v3
         with:
           name: relatorio-de-testes
           path: html
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+        run: npm i
+
+      - name: Node build
+        run: npm run build
+
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: lista-de-tarefas
+          path: dist
+
+  notificacao:
+    runs-on: ubuntu-latest
+    env:
+      EMAIL: lista.de.tarefas.s107@gmail.com
+    steps:
+      - name: Sanding an e-mail
+        uses: actions/checkout@v3
+        run: node nodemailer/sendEmail.js
