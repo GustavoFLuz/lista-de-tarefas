@@ -16,4 +16,6 @@ jobs:
         with:
           node-version: 9.8.1
       - name: Running tests
-      - runs: npm test
+      - run: |
+          cd lista-de-tarefas
+          npm test
