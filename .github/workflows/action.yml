@@ -16,10 +16,11 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-        run: npm i
 
       - name: Running tests
-        run: npm test
+        run: |
+          npm i
+          npm test
 
       - name: Artifact upload
         uses: actions/upload-artifact@v3
@@ -37,10 +38,11 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-        run: npm i
 
       - name: Node build
-        run: npm run build
+        run: |
+          npm i
+          npm run build
 
       - name: Artifact upload
         uses: actions/upload-artifact@v3
@@ -50,7 +52,6 @@ jobs:
 
   notificacao:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node
@@ -58,10 +59,10 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-        run: npm i
 
       - name: Sanding an e-mail
-        run: | 
+        run: |
+          npm i
           node nodemailer/sendEmail.js
         env:
           EMAIL: lista.de.tarefas.s107@gmail.com
