@@ -1,12 +1,12 @@
 import nodemailer from 'nodemailer';
 
-const variavelDeAmbiente =  process.env.EMAIL
+const variavelDeAmbiente =  process.env.EMAIL;
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'lista.de.tarefas.s107@gmail.com',
-        pass: 'lista-de-tarefas-s107',
+        pass: 'qafjenxoziemcuda',
     },
 });
 
@@ -24,3 +24,5 @@ transporter.sendMail(mailOptions, function(error, info){
         console.log('Email enviado com sucesso: ' + info.response);
     }
 });
+
+console.log(variavelDeAmbiente)
