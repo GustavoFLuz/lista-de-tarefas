@@ -3,7 +3,7 @@ import nodemailer from 'nodemailer';
 const variavelDeAmbiente =  process.env.EMAIL
 
 const transporter = nodemailer.createTransport({
-    service: 'Gmail',
+    service: 'gmail',
     auth: {
         user: 'lista.de.tarefas.s107@gmail.com',
         pass: 'lista-de-tarefas-s107',
@@ -12,15 +12,15 @@ const transporter = nodemailer.createTransport({
 
 const mailOptions = {
     from: 'lista.de.tarefas.s107@gmail.com',
-    to: variavelDeAmbiente,
+    to: `${variavelDeAmbiente}`,
     subject: 'Modificações feitas no repositório.',
     text: 'O pipeline está sendo executado.',
 };
 
-transporter.sendMail(mailOptions)
-    .then((info) => {
-        console.log('Email enviado com sucesso:', info.response);
-    })
-    .catch((error) => {
-        console.error('Erro ao enviar o email:', error);
-    });
+transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log('Erro ao enviar o email: ' + error);
+    } else {
+        console.log('Email enviado com sucesso: ' + info.response);
+    }
+});
