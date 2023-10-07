@@ -50,8 +50,7 @@ jobs:
 
   notificacao:
     runs-on: ubuntu-latest
-    env:
-      EMAIL: lista.de.tarefas.s107@gmail.com
+
     steps:
       - uses: actions/checkout@v3
       - name: Set up Node
@@ -62,4 +61,7 @@ jobs:
         run: npm i
 
       - name: Sanding an e-mail
-        run: node nodemailer/sendEmail.js
+        run: | 
+          node nodemailer/sendEmail.js
+        env:
+          EMAIL: lista.de.tarefas.s107@gmail.com
