@@ -19,4 +19,6 @@ jobs:
           node-version: 18
           cache: 'npm'
       - name: Running tests
-        run: npm test
+        run: |
+          npm i
+          npm test
