@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 const variavelDeAmbiente =  process.env.EMAIL
 
@@ -17,10 +17,10 @@ const mailOptions = {
     text: 'O pipeline está sendo executado.',
 };
 
-transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-        console.error('Erro ao enviar o email:', error);
-    } else {
+transporter.sendMail(mailOptions)
+    .then((info) => {
         console.log('Email enviado com sucesso:', info.response);
-    }
-});
+    })
+    .catch((error) => {
+        console.error('Erro ao enviar o email:', error);
+    });
