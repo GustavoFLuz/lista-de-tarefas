@@ -21,4 +21,10 @@ jobs:
       - name: Running tests
         run: |
           npm i
-          npm test
+          vitest --ui
+
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-de-testes
+          path: http://localhost:51204/__vitest__/
