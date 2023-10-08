@@ -17,36 +17,14 @@
 - Executar testes: `npm run test`
 
 # Sobre o uso dos Artefatos
+Por se tratarem de aplicações web, é necessário providenciar um servidor local para que os artefatos exibam suas informaçãoes corretamente. Aqui vai uma sequência de passos que permite o funcionamento adequado dos artefatos:
 
-O framework utilizado para realização de testes no projeto foi o Vitest. Essa ferramenta permite a geração de um arquivo HTML que exibe o relatório dos testes executados por ela (https://vitest.dev/guide/ui.html), porém, diferente de outras ferramentas de relatório de testes, o Vitest não gera uma página estática, isto é, ele também faz uso de um arquivo JavaScript para gerá-la. 
+## Instruções
+1. Tenha o Node.js intalado em sua máquina, você pode baixá-lo em https://nodejs.org/.
 
-Tendo isso em vista, ao acessar o artefato relativo aos testes disponibilizado pelo pipeline e extrai-lo para uma pasta, o arquivo HTML não funcionará corretamente, é um erro é exibido no Console (através de Inspecionar).
-
-Aqui está uma breve explicação do ocorrido:
-
-"O navegador bloqueou a solicitação para o arquivo a partir da origem null, pois o protocolo file:// não é considerado seguro para solicitações entre origens diferentes. O CORS é uma medida de segurança implementada pelos navegadores para evitar que scripts em um domínio acessem recursos em outro domínio."
-
-O mesmo ocorre ao tentar executar o arquivo HTML do artefato lista-de-tarefas, isto é, gerado pela build.
-
-Por se tratar de uma aplicação web, é necessário, portanto, providenciar um servidor local para que os artefatos exibam suas informaçãoes corretamente. Aqui vai uma sequência de passos que permitem o funcionamento adequado dos artefatos:
-
-
-## Instalação
-
-1. Tenha o Node.js intalado em sua máquina, pode baixá-lo em https://nodejs.org/.
-
-2. Instale o pacote http-server.
+2. **Dentro da pasta do Artefato**, execute os seguintes comandos:
 ```bash
-  npm install -g http-server
-```
-3. Use o terminal para navegar até a pasta onde o seu arquivo index.html está localizado. Você pode usar o comando cd (Change Directory) para fazer isso. Por exemplo:
-```bash
-  cd C:\Users\user_name\Downloads\lista-de-tarefas
-```
-4. Execute o seguinte comando para iniciar um servidor local:
-```bash
+  npm install http-server
   http-server
 ```
-5. O http-server irá iniciar um servidor web local e disponibilizará seus arquivos no endereço http://localhost:8080 por padrão. Você verá uma mensagem no terminal indicando o endereço exato onde seu servidor está rodando. Abra o seu navegador web e digite http://localhost:8080 na barra de endereços. Você deverá ver o seu arquivo index.html sendo servido a partir do servidor local. Ao fechar o prompt de comando, o servidor será desligado. 
-
-**Repita o processo, caso deseje vizualizar os demais artefatos disponiveis.** 
+Explicação: O http-server irá iniciar um servidor web local, você verá uma mensagem no terminal indicando o endereço exato onde seu servidor está rodando, abra o seu navegador web e digite-o na barra de pesquisa. Ao fechar o prompt de comando, o servidor será desligado. 
