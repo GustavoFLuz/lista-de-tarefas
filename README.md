@@ -1,4 +1,4 @@
-[![TypeScript Actions](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml/badge.svg)](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml)
+[![TypeScript CI with Node](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml/badge.svg)](https://github.com/GustavoFLuz/lista-de-tarefas/actions/workflows/action.yml)
 
 # Lista de Tarefas - C214 L
 
