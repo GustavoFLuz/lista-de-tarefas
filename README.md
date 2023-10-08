@@ -28,7 +28,7 @@ Aqui está uma breve explicação do ocorrido:
 
 O mesmo ocorre ao tentar executar o arquivo HTML do artefato lista-de-tarefas, isto é, gerado pela build.
 
-Por se tratar de uma aplicação web, é necessário, portanto, providenciar um servidor local para que os artefatos exibam suas informçãoes corretamente. Aqui vai uma sequência de passos que permitem o funcionamento adequado dos artefatos:
+Por se tratar de uma aplicação web, é necessário, portanto, providenciar um servidor local para que os artefatos exibam suas informaçãoes corretamente. Aqui vai uma sequência de passos que permitem o funcionamento adequado dos artefatos:
 
 
 ## Instalação
