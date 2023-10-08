@@ -16,10 +16,10 @@
 - Executar o código: `npm run dev`, a aplicação estará rodando na [porta 5173](http://localhost:5173)
 - Executar testes: `npm run test`
 
-# Sobre o uso dos Artefatos
+## Sobre o uso dos Artefatos
 Por se tratarem de aplicações web, é necessário providenciar um servidor local para que os artefatos exibam suas informaçãoes corretamente. Aqui vai uma sequência de passos que permite o funcionamento adequado dos artefatos:
 
-## Instruções
+### Instruções
 1. Tenha o Node.js intalado em sua máquina, você pode baixá-lo em https://nodejs.org/.
 
 2. **Dentro da pasta do Artefato**, execute os seguintes comandos:
