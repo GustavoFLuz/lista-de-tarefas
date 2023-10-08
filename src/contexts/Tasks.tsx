@@ -134,6 +134,11 @@ export function deleteByID(
     id: number,
     test: boolean = false
 ) {
+
+    if (oldTaskList.length === 0) {
+        throw new Error("A lista de tarefas está vazia. Não é possível excluir um item.");
+    }
+
     const newTaskList = oldTaskList.filter((task) => task.id !== id);
     saveLocally(newTaskList, test);
     return newTaskList;
