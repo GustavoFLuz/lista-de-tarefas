@@ -15,8 +15,6 @@ RUN apt-get install nodejs -y
 # Altere o usuário de volta para o Jenkins
 USER jenkins
 
-ENV NODE_HOME /usr/bin/node
-
 # GIT BASH no local onde está o Dockerfile:
 # docker build -t jenkins-with-node .
 # docker run -p 8080:8080 jenkins-with-node
