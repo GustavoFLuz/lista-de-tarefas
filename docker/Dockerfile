@@ -1,7 +1,7 @@
-# Use uma imagem base do Jenkins
+# Usa uma imagem base do Jenkins
 FROM jenkins/jenkins:latest
 
-# Instale o Node.js
+# Instala o Node.js
 USER root
 RUN apt-get update
 RUN apt-get install -y ca-certificates curl gnupg
@@ -12,7 +12,7 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt-get update
 RUN apt-get install nodejs -y
 
-# Altere o usuário de volta para o Jenkins
+# Altera o usuário de volta para o Jenkins
 USER jenkins
 
 # GIT BASH no local onde está o Dockerfile:
