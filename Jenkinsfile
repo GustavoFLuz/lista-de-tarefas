@@ -3,7 +3,7 @@ pipeline {
 
 
     stages {
-        stage('Install Dependencies') {
+        stage('Install Dependencie') {
             steps {
                 sh 'npm install'
             }
@@ -12,7 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'npm run test'
-                archiveArtifacts testReport: 'html/'
+                archiveArtifacts 'html/'
             }
         }
 
