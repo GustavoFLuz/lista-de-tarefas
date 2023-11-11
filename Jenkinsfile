@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'npm run test'
+                sh 'npx vite preview --outDir html'
                 archiveArtifacts 'html/'
             }
         }
