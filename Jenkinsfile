@@ -12,6 +12,7 @@ pipeline {
         stage('Test') {
             steps {
                 sh 'npm run test'
+                archiveArtifacts testReport: 'html/'
             }
         }
 
@@ -21,11 +22,5 @@ pipeline {
             }
         }
         
-    }
-
-    post {
-        always {
-            testResults: 'html/**'
-        }
     }
 }
