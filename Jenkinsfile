@@ -1,19 +1,15 @@
 pipeline {
-    agent any
+    agent {docker true}
+
+    
+
     stages {
-        stage('Build') {
+        stage('Check Dependencies') {
             steps {
-                sh 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                sh 'npm run deploy'
+                sh '
+                node --version
+                npm --version
+                npm install'
             }
         }
     }
