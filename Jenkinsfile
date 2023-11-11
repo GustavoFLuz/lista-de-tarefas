@@ -19,6 +19,7 @@ pipeline {
         stage('Build Project') {
             steps {
                 sh 'npm run build'
+                archiveArtifacts 'dist/'
             }
         }
         
