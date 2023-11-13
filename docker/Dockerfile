@@ -12,6 +12,9 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt-get update
 RUN apt-get install nodejs -y
 
+# Instalado mailutils
+RUN apt-get install mailutils
+
 # Altera o usuário de volta para o Jenkins
 USER jenkins
 
