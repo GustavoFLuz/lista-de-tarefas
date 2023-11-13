@@ -22,6 +22,17 @@ pipeline {
                 archiveArtifacts 'dist/'
             }
         }
+
+        stage('Send Notification'){
+            steps {
+                echo "Sending Notification"
+                sh '''
+                   cd scripts
+                   chmod 775 *
+                   ./notification.sh
+                   '''
+            }
+        }
         
     }
 }
