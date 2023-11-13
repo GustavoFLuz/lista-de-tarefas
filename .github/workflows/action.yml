@@ -1,0 +1,68 @@
+name: TypeScript CI with Node
+
+on:
+  push:
+    branches: [ 'main' ]
+  pull_request:
+    branches: [ 'main' ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Running tests
+        run: |
+          npm i
+          npm test
+
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: relatorio-de-testes
+          path: html
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Node build
+        run: |
+          npm i
+          npm run build
+
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: lista-de-tarefas
+          path: dist
+
+  notificacao:
+    runs-on: ubuntu-latest
+    env:
+      EMAIL: lista.de.tarefas.s107@gmail.com
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: Sanding an e-mail
+        run: |
+          npm i
+          node nodemailer/sendEmail.js

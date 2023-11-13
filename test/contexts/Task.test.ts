@@ -1,6 +1,6 @@
-import { describe, expect, test } from 'vitest'
-import { addNewTask, taskStatus, deleteByID, updateStatus } from '@/contexts/Tasks'
-import { Task } from '@/types/Tasks'
+import {describe, expect, test} from 'vitest'
+import {addNewTask, taskStatus, deleteByID, updateStatus} from '@/contexts/Tasks'
+import {Task} from '@/types/Tasks'
 
 
 describe('Create, Update, Delete Functions Test Suit', () => {
@@ -19,7 +19,6 @@ describe('Create, Update, Delete Functions Test Suit', () => {
     })
 
     describe('Delete Operations Test', () => {
-
         test('should delete an item from the list', () => {
             const task = {
                 id: 1,
@@ -37,6 +36,13 @@ describe('Create, Update, Delete Functions Test Suit', () => {
         })
     })
 
+    describe('Delete Operations Test 2', () => {
+        test('should not delete an item from an empty list',  async () => {
+            const emptyList: Task[] = []
+            expect(() => deleteByID(emptyList, 1, true)).toThrowError("A lista de tarefas está vazia. Não é possível excluir um item.")
+        })
+    })
+
     describe('Update Operations Test', () => {
         test('should change task status to "Em andamento"', () => {
             const task: Task = {
@@ -48,8 +54,7 @@ describe('Create, Update, Delete Functions Test Suit', () => {
             const list: Task[] = [task]
 
 
-
-            const updatedList = updateStatus(list, { status: taskStatus[1], id: 1 }, true)
+            const updatedList = updateStatus(list, {status: taskStatus[1], id: 1}, true)
 
             expect(updatedList[0].status).toBe(taskStatus[1])
         })
@@ -63,7 +68,7 @@ describe('Create, Update, Delete Functions Test Suit', () => {
             }
             const list: Task[] = [task]
 
-            const updatedList = updateStatus(list, { status: taskStatus[2], id: 1 }, true)
+            const updatedList = updateStatus(list, {status: taskStatus[2], id: 1}, true)
 
             expect(updatedList[0].status).toBe(taskStatus[2])
         })
