@@ -15,13 +15,8 @@ RUN apt-get install nodejs -y
 # Instalado mailutils
 RUN apt-get install mailutils
 
-<<<<<<< HEAD:docker/Dockerfile-jenkins
-# GIT BASH no local onde está o Dockerfile-jenkins:
-=======
 # Altera o usuário de volta para o Jenkins
 USER jenkins
 
-# GIT BASH no local onde está o Dockerfile:
->>>>>>> 90aaf457b3877739a53e31b4fa797264986dc0e1:docker/Dockerfile
 # docker build -t jenkins-with-node .
 # docker run -p 8080:8080 jenkins-with-node
