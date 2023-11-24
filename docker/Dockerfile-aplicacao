@@ -1,0 +1,17 @@
+# Utiliza uma versão válida da imagem oficial do Node
+FROM node:20-alpine
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+# Copia os arquivos package.json e o package-lock.json separadamente
+COPY package.json .
+# Instala as dependências do projeto
+RUN npm i
+# Copia o restante da aplicação para o diretório de trabalho
+COPY . .
+# Comando para iniciar a aplicação
+CMD ["npm", "run", "dev"]
+# Expoem a porta necessária para acessar a aplicação
+EXPOSE 3000
+
+# docker build -t dockerfile-aplicacao -f docker/Dockerfile-aplicacao .
+# docker run -dp 127.0.0.1:8080:5173 dockerfile-aplicacao

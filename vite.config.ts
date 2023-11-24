@@ -15,5 +15,13 @@ export default defineConfig({
     globals:true,
     environment:"jsdom",
     reporters: ['default', 'html'],
+  },
+  server: {
+    watch: {
+      usePolling: true,
+    },
+    host: true,
+    strictPort: true,
+    port: 3000,
   }
 })
