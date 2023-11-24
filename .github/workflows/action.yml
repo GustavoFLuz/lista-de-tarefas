@@ -50,6 +50,12 @@ jobs:
           name: lista-de-tarefas
           path: dist
 
+      - name: Artifact upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact-instructions
+          path: artifact-instructions
+
   notificacao:
     runs-on: ubuntu-latest
     env:

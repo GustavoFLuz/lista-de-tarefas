@@ -15,16 +15,3 @@
 2. Executar `npm i` para instalar as dependencias
 - Executar o código: `npm run dev`, a aplicação estará rodando na [porta 5173](http://localhost:5173)
 - Executar testes: `npm run test`
-
-## Sobre o uso dos Artefatos
-Por se tratarem de aplicações web, é necessário providenciar um servidor local para que os artefatos exibam suas informaçãoes corretamente. Aqui vai uma sequência de passos que permite o funcionamento adequado dos artefatos:
-
-### Instruções
-1. Tenha o Node.js intalado em sua máquina, você pode baixá-lo em https://nodejs.org/.
-
-2. **Dentro da pasta do Artefato**, execute os seguintes comandos:
-```bash
-  npm install http-server
-  http-server
-```
-Explicação: O http-server irá iniciar um servidor web local, você verá uma mensagem no terminal indicando o endereço exato onde seu servidor está rodando, abra o seu navegador web e digite-o na barra de pesquisa. Ao fechar o prompt de comando, o servidor será desligado. 

@@ -14,4 +14,4 @@ CMD ["npm", "run", "dev"]
 EXPOSE 3000
 
 # docker build -t dockerfile-aplicacao -f docker/Dockerfile-aplicacao .
-# docker run -dp 127.0.0.1:8080:5173 dockerfile-aplicacao
+# docker run -dp 127.0.0.1:3000:3000 dockerfile-aplicacao
