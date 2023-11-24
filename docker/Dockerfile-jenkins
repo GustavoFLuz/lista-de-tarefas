@@ -1,7 +1,7 @@
-# Use uma imagem base do Jenkins
+# Usa uma imagem base do Jenkins
 FROM jenkins/jenkins:latest
 
-# Instale o Node.js
+# Instala o Node.js
 USER root
 RUN apt-get update
 RUN apt-get install -y ca-certificates curl gnupg
@@ -12,9 +12,16 @@ RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesourc
 RUN apt-get update
 RUN apt-get install nodejs -y
 
-# Altere o usuário de volta para o Jenkins
+# Instalado mailutils
+RUN apt-get install mailutils
+
+<<<<<<< HEAD:docker/Dockerfile-jenkins
+# GIT BASH no local onde está o Dockerfile-jenkins:
+=======
+# Altera o usuário de volta para o Jenkins
 USER jenkins
 
-# GIT BASH no local onde está o Dockerfile-jenkins:
+# GIT BASH no local onde está o Dockerfile:
+>>>>>>> 90aaf457b3877739a53e31b4fa797264986dc0e1:docker/Dockerfile
 # docker build -t jenkins-with-node .
 # docker run -p 8080:8080 jenkins-with-node

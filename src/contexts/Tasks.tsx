@@ -28,8 +28,11 @@ type TaskProviderProps = {
 
 const TaskContexts = createContext<null | TaskContext>(null);
 
-export const TaskProvider: React.FC<TaskProviderProps> = ({ children, initialList }) => {
-    const [tasks, setTasks] = useState<Task[]>(initialList?initialList:[]);
+export const TaskProvider: React.FC<TaskProviderProps> = ({
+    children,
+    initialList,
+}) => {
+    const [tasks, setTasks] = useState<Task[]>(initialList ? initialList : []);
     const lastId =
         tasks.length === 0
             ? 0
@@ -66,7 +69,11 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children, initialLis
     };
 
     useEffect(() => {
-        setTasks((prev)=>[...prev, ...getFromLocally()]);
+        setTasks((prev) => {
+            if (prev.length) return prev;
+            if (initialList) return [...initialList, ...getFromLocally()];
+            return getFromLocally();
+        });
     }, []);
 
     return (
