@@ -11,8 +11,8 @@ services:
     privileged: true
     user: root
     ports:
-      - 8080:8080
-      - 50000:50000
+      - "8080:8080"
+      - "50000:50000"
     volumes:
       - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
@@ -20,7 +20,7 @@ services:
   mongodb:
     image: mongo
     ports:
-      - 27017:27017
+      - "27017:27017"
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
@@ -29,9 +29,8 @@ services:
 
   web-application:
     build:
-      context: ./docker
+      context: .
       dockerfile: Dockerfile-aplicacao
     container_name: lista-de-tarefas
     ports:
-      - 3000:3000
-    depends_on: mongodb
+      - "3000:3000"
