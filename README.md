@@ -16,4 +16,16 @@
 - Executar o código: `npm run dev`, a aplicação estará rodando na [porta 5173](http://localhost:5173)
 - Executar testes: `npm run test`
 
-##
+## Executando Docker Compose
+
+Acessar o diretório do repositório e executar o comando: `docker-compose up`
+
+Para acessar a aplicação acesse: [Lista de Tarefas](http://localhost:3000/)
+
+Para acessar o Jenkins acesse: [Jenkins Painel de Controle](http://localhost:8080/)
+
+## Imagens Docker HUB
+
+- [Lista de Tarefas]()
+- [Jenkins With Node](https://hub.docker.com/repository/docker/vonot16/jenkins-with-node-configured/general)
+- [MongoDB](https://hub.docker.com/_/mongo)
