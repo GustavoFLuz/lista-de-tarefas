@@ -15,3 +15,5 @@
 2. Executar `npm i` para instalar as dependencias
 - Executar o código: `npm run dev`, a aplicação estará rodando na [porta 5173](http://localhost:5173)
 - Executar testes: `npm run test`
+
+##

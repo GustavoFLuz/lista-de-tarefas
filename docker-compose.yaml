@@ -4,15 +4,10 @@ version: '3.8'
 services:
 
   jenkins-with-node:
-    build:
-      context: ./docker
-      dockerfile: Dockerfile-jenkins
-    container_name: jenkins
-    privileged: true
+    image: vonot16/jenkins-with-node-configured
     user: root
     ports:
       - "8080:8080"
-      - "50000:50000"
     volumes:
       - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock

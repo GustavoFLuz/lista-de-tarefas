@@ -23,3 +23,7 @@ html
 *.njsproj
 *.sln
 *.sw?
+
+/data
+/jenkins_compose
+*.env
