@@ -23,6 +23,21 @@ services:
     volumes:
       - ./data:/data/db
 
+  api:
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
+    container_name: lista-de-tarefas-api
+    ports:
+      - "50000:8080"
+    environment:
+      MONGO_URL: mongodb://mongodb:27017
+      MONGO_USER: root
+      MONGO_PASS: root
+    
+    depends_on:
+      - mongodb
+
   web-application:
     build:
       context: .
