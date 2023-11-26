@@ -1,6 +1,6 @@
 # Define a versão da sintaxe do Docker Compose que está sendo utilizada no arquivo.
 version: '3.8'
-# https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
+
 services:
 
   jenkins-with-node:
@@ -12,6 +12,7 @@ services:
       - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 
+  # https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
   mongodb:
     image: mongo
     ports:
