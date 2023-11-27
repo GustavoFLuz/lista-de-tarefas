@@ -1,3 +1,4 @@
+import api from "@/api";
 import { Task, TaskStatus } from "@/types/Tasks";
 import {
     ReactElement,
@@ -64,16 +65,19 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({
     };
 
     const deleteAll = () => {
+        api.deleteAll();
         setTasks([]);
         saveLocally([]);
     };
 
     useEffect(() => {
-        setTasks((prev) => {
+        getTasks().then(res=>{
+            setTasks((prev) => {
             if (prev.length) return prev;
-            if (initialList) return [...initialList, ...getFromLocally()];
-            return getFromLocally();
+            if (initialList) return [...initialList, ...res];
+            return res;
         });
+        })
     }, []);
 
     return (
@@ -105,10 +109,8 @@ export function saveLocally(taskList: Task[], test: boolean = false) {
     if (!test) localStorage.setItem("tasks", JSON.stringify(taskList));
 }
 
-export function getFromLocally(): Task[] {
-    const saved = localStorage.getItem("tasks");
-    if (saved === null) return [];
-    return JSON.parse(saved);
+export async function  getTasks(): Promise<Task[]> {
+    return api.get()
 }
 
 export function addNewTask(
@@ -118,6 +120,7 @@ export function addNewTask(
 ) {
     const newTaskList = [...oldTaskList, newTask];
     saveLocally(newTaskList, test);
+    api.post(newTask)
     return newTaskList;
 }
 
@@ -132,6 +135,7 @@ export function updateStatus(
         ...oldTaskList.filter((el) => el.id !== id),
         { ...found, status },
     ];
+    api.put(id, status)
     saveLocally(newTaskList, test);
     return newTaskList;
 }
@@ -147,6 +151,7 @@ export function deleteByID(
     }
 
     const newTaskList = oldTaskList.filter((task) => task.id !== id);
+    api.delete(id)
     saveLocally(newTaskList, test);
     return newTaskList;
 }
