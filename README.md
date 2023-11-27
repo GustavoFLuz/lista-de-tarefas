@@ -26,6 +26,6 @@ Para acessar o Jenkins acesse: [Jenkins Painel de Controle](http://localhost:808
 
 ## Imagens Docker HUB
 
-- [Lista de Tarefas]()
+- [Lista de Tarefas](https://hub.docker.com/r/edrassimoes/dockerfile-aplicacao)
 - [Jenkins With Node](https://hub.docker.com/repository/docker/vonot16/jenkins-with-node-configured/general)
 - [MongoDB](https://hub.docker.com/_/mongo)
