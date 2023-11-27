@@ -1,4 +1,3 @@
-# Define a versão da sintaxe do Docker Compose que está sendo utilizada no arquivo.
 version: '3.8'
 
 services:
@@ -12,7 +11,6 @@ services:
       - ./jenkins_compose/jenkins_configuration:/var/jenkins_home
       - /var/run/docker.sock:/var/run/docker.sock
 
-  # https://github.com/docker/awesome-compose/tree/master/react-express-mongodb
   mongodb:
     image: mongo
     ports:
@@ -34,14 +32,11 @@ services:
       MONGO_URL: mongodb://mongodb:27017
       MONGO_USER: root
       MONGO_PASS: root
-    
     depends_on:
       - mongodb
 
   web-application:
-    build:
-      context: .
-      dockerfile: Dockerfile-aplicacao
+    image: edrassimoes/dockerfile-aplicacao:1.0
     container_name: lista-de-tarefas
     ports:
       - "3000:3000"
