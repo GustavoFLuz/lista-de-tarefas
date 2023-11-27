@@ -27,9 +27,7 @@ pipeline {
             steps {
                 echo "Sending Notification"
                 sh '''
-                   cd scripts
-                   chmod 775 *
-                   ./notification.sh
+                   node nodemailer/sendEmail.js
                    '''
             }
         }
