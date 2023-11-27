@@ -4,10 +4,12 @@ import (
 	"context"
 	"fmt"
 	"log"
-	"time"
 	"os"
+	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
+
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
@@ -23,12 +25,12 @@ func main() {
 
 func ConnectToMongo() (*mongo.Client, error) {
 	for _, e := range os.Environ() {
-        fmt.Println(e)
-    }
+		fmt.Println(e)
+	}
 
 	credential := options.Credential{
-		Username:      os.Getenv("MONGO_USER"),
-		Password:      os.Getenv("MONGO_PASS"),
+		Username: os.Getenv("MONGO_USER"),
+		Password: os.Getenv("MONGO_PASS"),
 	}
 	const maxRetries = 10
 	retryInterval := 5 * time.Second
@@ -49,6 +51,10 @@ func ConnectToMongo() (*mongo.Client, error) {
 
 func StartAPI(client *mongo.Client) {
 	router := gin.Default()
+
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"}
+	router.Use(cors.New(config))
 
 	tasksDB := client.Database("C214").Collection("tasks")
 
@@ -123,6 +129,12 @@ func StartAPI(client *mongo.Client) {
 		} else {
 			c.JSON(200, res)
 		}
+	})
+
+	router.OPTIONS("/*any", func(c *gin.Context) {
+		c.Header("Access-Control-Allow-Origin", "*")
+		c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+		c.Status(200)
 	})
 	router.Run()
 }
